@@ -16,14 +16,16 @@ test('Defaults to open and unlocked, displays unlocked and open' , () => {
     expect(closed).toHaveClass('green-led')
 })
 
-test('displays closed if the closed prop is true and locked if the locked prop is true', () => {
+test('displays closed if the closed prop is true and locked if the locked prop is true, also displays red led on both', () => {
     const { getByTestId } = render(<Display closed={true} locked={true} />);
 
     const locked = getByTestId('locked-display')
     const closed = getByTestId('closed-display')
 
     expect(locked).toHaveTextContent(/^locked$/i)
+    expect(locked).toHaveClass('red-led')
     expect(closed).toHaveTextContent(/^closed$/i)
+    expect(closed).toHaveClass('red-led')
 })
 
 
